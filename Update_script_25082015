@@ -1,0 +1,485 @@
+-- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ume
+-- ------------------------------------------------------
+-- Server version	5.1.73-community
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `Category_ID` varchar(10) NOT NULL,
+  `Category_name` varchar(25) NOT NULL,
+  `Category_Desc` varchar(40) DEFAULT NULL,
+  `Parent_category_id` varchar(10) DEFAULT NULL,
+  `Status` char(1) NOT NULL,
+  `Created_date` datetime NOT NULL,
+  `Last_updated_Date` datetime NOT NULL,
+  PRIMARY KEY (`Category_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `category_to_store`
+--
+
+DROP TABLE IF EXISTS `category_to_store`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category_to_store` (
+  `Category_ID` varchar(10) DEFAULT NULL,
+  `Store_ID` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category_to_store`
+--
+
+LOCK TABLES `category_to_store` WRITE;
+/*!40000 ALTER TABLE `category_to_store` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category_to_store` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `distributor_details`
+--
+
+DROP TABLE IF EXISTS `distributor_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `distributor_details` (
+  `Distributor_ID` varchar(10) NOT NULL,
+  `Distributor_status` varchar(10) NOT NULL,
+  `Distributor_latitude` varchar(10) NOT NULL,
+  `Distributor_longitude` varchar(10) NOT NULL,
+  `Distance` int(11) NOT NULL,
+  `last_updated_date` datetime NOT NULL,
+  `Approved_distributor` char(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `distributor_details`
+--
+
+LOCK TABLES `distributor_details` WRITE;
+/*!40000 ALTER TABLE `distributor_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `distributor_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `distributor_registration`
+--
+
+DROP TABLE IF EXISTS `distributor_registration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `distributor_registration` (
+  `Distributor_ID` varchar(10) NOT NULL,
+  `Distributor_Name` varchar(25) NOT NULL,
+  `Address` varchar(40) NOT NULL,
+  `city` varchar(25) NOT NULL,
+  `state` varchar(25) NOT NULL,
+  `country` varchar(25) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `last_updated` datetime NOT NULL,
+  `Phone_number` int(11) NOT NULL,
+  `email_id` varchar(25) NOT NULL,
+  `Phone_verified` char(1) NOT NULL,
+  `Email_verified` char(1) NOT NULL,
+  `phone_IME` varchar(40) NOT NULL,
+  PRIMARY KEY (`Distributor_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `distributor_registration`
+--
+
+LOCK TABLES `distributor_registration` WRITE;
+/*!40000 ALTER TABLE `distributor_registration` DISABLE KEYS */;
+INSERT INTO `distributor_registration` VALUES ('D123456','UME','chennai','chennai','tamilnadu','india','2015-08-19 00:00:00','2015-08-19 00:00:00',2147483647,'venkatesh.s2006@gmail.com','Y','Y','IME-286378276363');
+/*!40000 ALTER TABLE `distributor_registration` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `logindetails`
+--
+
+DROP TABLE IF EXISTS `logindetails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `logindetails` (
+  `customerID` varchar(20) NOT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `passcode` varchar(4) DEFAULT '0000',
+  `userType` varchar(45) DEFAULT NULL,
+  `userStatus` varchar(10) DEFAULT NULL,
+  `createdDate` date DEFAULT NULL,
+  `lastLoginDate` date DEFAULT NULL,
+  PRIMARY KEY (`customerID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `logindetails`
+--
+
+LOCK TABLES `logindetails` WRITE;
+/*!40000 ALTER TABLE `logindetails` DISABLE KEYS */;
+INSERT INTO `logindetails` VALUES ('R12345','R12345','0000','RETAILER','ACTIVE','2015-03-30','2015-03-30'),('R23456','R23456','0000','RETAILER','ACTIVE','2015-08-30','2015-08-30');
+/*!40000 ALTER TABLE `logindetails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_details`
+--
+
+DROP TABLE IF EXISTS `order_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order_details` (
+  `Order_ID` int(11) NOT NULL,
+  `OrderPlaced_RetailerID` varchar(10) NOT NULL,
+  `Store_ID` varchar(10) NOT NULL,
+  `Distributor_ID` varchar(10) NOT NULL,
+  `Email_id` varchar(25) DEFAULT NULL,
+  `Phone_number` int(11) NOT NULL,
+  `Order_status` varchar(10) NOT NULL,
+  `Order_created_date` datetime NOT NULL,
+  `Last_updated_date` datetime NOT NULL,
+  PRIMARY KEY (`Order_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_details`
+--
+
+LOCK TABLES `order_details` WRITE;
+/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ordered_product`
+--
+
+DROP TABLE IF EXISTS `ordered_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ordered_product` (
+  `Order_Product_ID` varchar(10) NOT NULL,
+  `Order_ID` int(11) NOT NULL,
+  `Order_Product_Name` varchar(10) NOT NULL,
+  `Order_Qty` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ordered_product`
+--
+
+LOCK TABLES `ordered_product` WRITE;
+/*!40000 ALTER TABLE `ordered_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ordered_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `prod_to_category`
+--
+
+DROP TABLE IF EXISTS `prod_to_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `prod_to_category` (
+  `Product_ID` varchar(10) DEFAULT NULL,
+  `Category_ID` varchar(10) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prod_to_category`
+--
+
+LOCK TABLES `prod_to_category` WRITE;
+/*!40000 ALTER TABLE `prod_to_category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `prod_to_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_attribute`
+--
+
+DROP TABLE IF EXISTS `product_attribute`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_attribute` (
+  `Product_ID` varchar(10) DEFAULT NULL,
+  `Attribute_ID` varchar(10) NOT NULL,
+  `Attribute_value` varchar(25) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_attribute`
+--
+
+LOCK TABLES `product_attribute` WRITE;
+/*!40000 ALTER TABLE `product_attribute` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_attribute` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_details`
+--
+
+DROP TABLE IF EXISTS `product_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_details` (
+  `Product_ID` varchar(10) NOT NULL,
+  `Product_Name` varchar(25) NOT NULL,
+  `Product_Model` varchar(10) DEFAULT NULL,
+  `SKU` varchar(20) NOT NULL,
+  `Quantity` int(11) DEFAULT NULL,
+  `Manufacture_id` varchar(10) DEFAULT NULL,
+  `weight` int(11) DEFAULT NULL,
+  `status` char(1) NOT NULL,
+  PRIMARY KEY (`Product_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_details`
+--
+
+LOCK TABLES `product_details` WRITE;
+/*!40000 ALTER TABLE `product_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_to_distributor`
+--
+
+DROP TABLE IF EXISTS `product_to_distributor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_to_distributor` (
+  `Product_ID` varchar(10) NOT NULL,
+  `Distributor_ID` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_to_distributor`
+--
+
+LOCK TABLES `product_to_distributor` WRITE;
+/*!40000 ALTER TABLE `product_to_distributor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_to_distributor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `registrationrequest`
+--
+
+DROP TABLE IF EXISTS `registrationrequest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `registrationrequest` (
+  `distributorID` varchar(20) NOT NULL,
+  `activationCode` varchar(45) NOT NULL,
+  `retailerPhone` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`activationCode`),
+  UNIQUE KEY `phonenumber_UNIQUE` (`retailerPhone`),
+  KEY `Distributor_ID_idx` (`distributorID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `registrationrequest`
+--
+
+LOCK TABLES `registrationrequest` WRITE;
+/*!40000 ALTER TABLE `registrationrequest` DISABLE KEYS */;
+INSERT INTO `registrationrequest` VALUES ('D123456','A236723-F7623','9986531116'),('D23456','A5324-T3243','8736727383');
+/*!40000 ALTER TABLE `registrationrequest` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `retailer_registration`
+--
+
+DROP TABLE IF EXISTS `retailer_registration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `retailer_registration` (
+  `Retailer_ID` varchar(10) NOT NULL,
+  `Retailer_Name` varchar(25) NOT NULL,
+  `Address` varchar(40) NOT NULL,
+  `city` varchar(25) NOT NULL,
+  `state` varchar(25) NOT NULL,
+  `country` varchar(25) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `last_updated` datetime NOT NULL,
+  `Phone_number` int(11) NOT NULL,
+  `email_id` varchar(25) NOT NULL,
+  `Phone_verified` char(1) NOT NULL,
+  `Email_verified` char(1) NOT NULL,
+  `phone_IME` varchar(40) NOT NULL,
+  PRIMARY KEY (`Retailer_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `retailer_registration`
+--
+
+LOCK TABLES `retailer_registration` WRITE;
+/*!40000 ALTER TABLE `retailer_registration` DISABLE KEYS */;
+/*!40000 ALTER TABLE `retailer_registration` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shipping_details`
+--
+
+DROP TABLE IF EXISTS `shipping_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `shipping_details` (
+  `Order_ID` int(11) NOT NULL,
+  `Shipping_Address` varchar(40) NOT NULL,
+  `Shipping_city` varchar(25) NOT NULL,
+  `Shipping_PostalCode` int(11) NOT NULL,
+  `Shipping_Country` varchar(20) NOT NULL,
+  `Comments` varchar(60) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shipping_details`
+--
+
+LOCK TABLES `shipping_details` WRITE;
+/*!40000 ALTER TABLE `shipping_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shipping_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `store_details`
+--
+
+DROP TABLE IF EXISTS `store_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `store_details` (
+  `Retailer_id` varchar(10) NOT NULL,
+  `Store_id` varchar(10) NOT NULL,
+  `Store_Name` varchar(25) NOT NULL,
+  `Store_Address` varchar(40) NOT NULL,
+  `Store_city` varchar(25) NOT NULL,
+  `Store_state` varchar(25) NOT NULL,
+  `Store_country` varchar(25) NOT NULL,
+  `Store_status` char(1) NOT NULL,
+  `Latitude` int(11) NOT NULL,
+  `Longitude` int(11) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `last_updated` datetime NOT NULL,
+  `Approved_store` char(1) NOT NULL,
+  `Approver_Distributor_id` varchar(10) NOT NULL,
+  PRIMARY KEY (`Store_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `store_details`
+--
+
+LOCK TABLES `store_details` WRITE;
+/*!40000 ALTER TABLE `store_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `store_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `store_to_distributor`
+--
+
+DROP TABLE IF EXISTS `store_to_distributor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `store_to_distributor` (
+  `Store_ID` varchar(10) NOT NULL,
+  `Distributor_ID` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `store_to_distributor`
+--
+
+LOCK TABLES `store_to_distributor` WRITE;
+/*!40000 ALTER TABLE `store_to_distributor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `store_to_distributor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `viewcartdetails`
+--
+
+DROP TABLE IF EXISTS `viewcartdetails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `viewcartdetails` (
+  `Retailer_ID` varchar(10) NOT NULL,
+  `Product_ID` varchar(10) NOT NULL,
+  `Product_Qty` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `viewcartdetails`
+--
+
+LOCK TABLES `viewcartdetails` WRITE;
+/*!40000 ALTER TABLE `viewcartdetails` DISABLE KEYS */;
+/*!40000 ALTER TABLE `viewcartdetails` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-08-25  1:23:32
